@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8"> 
+	<title>musical Arena</title>
+	<script type="text/javascript" src="/eel.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/header.css">
+	<link rel="stylesheet" type="text/css" href="/css/background.css">
+	<link rel="stylesheet" type="text/css" href="/css/player.css">
+	<style>
+	body{
+		margin: 0;
+	}
+	/* <style> */
+		.callout_red {
+			position: fixed;
+			top: 35px;
+			right: 20px;
+			margin-left: 20px;
+			/* max-width: 300px; */
+			padding: 25px 15px;
+			background: red;
+			/* font-size: 10px; */
+			color: white;
+		}
+		.callout_green{
+			position: fixed;
+			top: 35px;
+			right: 20px;
+			margin-left: 20px;
+			/* max-width: 300px; */
+			padding: 25px 15px;
+			background: green;
+			/* font-size: 30px; */
+			color: white;
+		}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		td,th {
+			border: 1px solid #ffffff;
+			text-align: left;
+			padding: 8px;
+		}
+		
+		th {
+		  background-color: #dddddd;
+		}
+		tr:nth-child(even) {
+		  background-color: #a3fff0;
+		}
+		tr:nth-child(odd) {
+		  background-color: #cbfdc9;
+		}
+		/* </style> */
+	</style>
+</head>
+
+
+
+<body>
+	<br><br><br><br><br>
+	<div id="first">
+		<h1 font-family="verdana" align="center" style="font-size: 40px;color: white;margin: 0;">Music Player<h1>
+			<!-- <button id="logout_btn" font-family="verdana" align="center" style="margin: 40px;" href="https://www.google.com/">LogOut</button>
+			<a href="https://google.com" class="btn btn-primary"></a> -->
+			<!-- <input type="button" onclick="window.location.replace( window.location.origin + `/api/v1/logout`);" id="logout_btn" value="LogOut" /> -->
+			<input type="button" onclick="logout_submit();" id="logout_btn" value="LogOut" />
+		</div>
+	<!--<div id="second" class="second">
+
+		<button onclick="myFunction()">
+	</div>
+	-->
+
+	<script src="/js/code.js"></script>
+
+	<div id="queue" style="text-align: center; display: none;"><br><span style="margin-bottom: 10px;">Queue</span>
+		<input type="button" id="next" onclick="nextsong()">
+		<hr>
+	</div>
+	<button id="queue_btn"  onclick="displayQueue()"><b>Queue</b></button>
+	<div id="third">
+		<div id="emoji"></div>
+		<div id="xyz">
+		&nbsp;&nbsp;&nbsp;Playing :&nbsp;&nbsp;
+		<label id="sname" align="center">none</label></div>
+		<div id="mod">mode : Queue-mode <input type="radio" name="mode" checked="checked" onclick="setmod(this)" value="1"> &nbsp;&nbsp;Random-mode 
+			<input type="radio" name="mode" onclick="setmod(this)" value="3"></div>
+		<audio controls id="main_slider">
+  		<source id="sel"  type="audio/mpeg">
+Your browser does not support the audio element.
+		</audio>
+		<script src="/js/jquery.js"></script>
+		<script>
+	document.getElementById("main_slider").onended=function(){
+		if(mod==1)
+			next_in_Q();
+		else if(mod==2){
+			getTime();
+		}
+		else
+			rand_play();
+
+	};
+	// document.getElementById("queue_btn").hover=function(){
+	// 	document.getElementById("queue").removeAttribute("style", "display: none;")
+	// };
+
+		</script>
+		<script>
+			function logout_submit(){
+				// $('#status_message').html("");
+				let url = '/api/v1/logout'
+				let data = {
+					"email": "logout"
+				}
+				let login_settings = {
+					"url": url,
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"data": JSON.stringify(data),
+					error: function(resp) {
+						resp = JSON.parse(resp.responseText);
+						let html = `<p style='color: red;'>${resp.error_message}</p>`;
+						$('#status_message').html(html);
+					}
+				};
+				$.ajax(login_settings).done(function (resp) {
+					if(resp.error_message){
+						let html = `<p style='color: red;'>${resp.msg}</p>`;
+						$('#status_message').html(html);
+						return;
+					}
+					$("input").prop("disabled", true);
+					window.location.replace( window.location.origin + `/loged_out_successful/${resp.user}`);
+				});
+				return;
+			}
+		</script>
+		</div>
+		</body>
+</html>

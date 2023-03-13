@@ -1,0 +1,16 @@
+2023-01-05 12:18:38,325 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+2023-01-05 12:18:49,451 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:49] "GET /api/v1/signup HTTP/1.1" 200 -
+2023-01-05 12:18:49,490 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:49] "GET /css/bootstrap.min.css HTTP/1.1" 200 -
+2023-01-05 12:18:49,496 INFO werkzeug Thread-2 : 127.0.0.1 - - [05/Jan/2023 12:18:49] "GET /css/font-awesome.min.css HTTP/1.1" 200 -
+2023-01-05 12:18:49,512 INFO werkzeug Thread-2 : 127.0.0.1 - - [05/Jan/2023 12:18:49] "GET /css/main.css HTTP/1.1" 200 -
+2023-01-05 12:18:49,532 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:49] "GET /js/jquery.js HTTP/1.1" 200 -
+2023-01-05 12:18:50,459 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:50] "GET /css/background.jpg HTTP/1.1" 200 -
+2023-01-05 12:18:50,493 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:50] "GET /fonts/fontawesome-webfont.woff?v=4.0.3 HTTP/1.1" 200 -
+2023-01-05 12:18:50,734 INFO werkzeug Thread-1 : 127.0.0.1 - - [05/Jan/2023 12:18:50] "[33mGET /images/ico/favicon.ico HTTP/1.1[0m" 404 -
+2023-01-05 12:19:24,137 INFO werkzeug Thread-5 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "GET /api/v1/signup HTTP/1.1" 200 -
+2023-01-05 12:19:24,157 INFO werkzeug Thread-5 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2023-01-05 12:19:24,160 INFO werkzeug Thread-6 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /css/font-awesome.min.css HTTP/1.1[0m" 304 -
+2023-01-05 12:19:24,396 INFO werkzeug Thread-7 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /css/main.css HTTP/1.1[0m" 304 -
+2023-01-05 12:19:24,476 INFO werkzeug Thread-9 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /js/jquery.js HTTP/1.1[0m" 304 -
+2023-01-05 12:19:24,476 INFO werkzeug Thread-8 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /fonts/fontawesome-webfont.woff?v=4.0.3 HTTP/1.1[0m" 304 -
+2023-01-05 12:19:24,477 INFO werkzeug Thread-10 : 127.0.0.1 - - [05/Jan/2023 12:19:24] "[36mGET /css/background.jpg HTTP/1.1[0m" 304 -

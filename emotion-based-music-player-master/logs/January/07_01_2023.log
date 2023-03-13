@@ -1,0 +1,8 @@
+2023-01-07 20:36:54,658 ERROR werkzeug Thread-7 : 127.0.0.1 - - [07/Jan/2023 20:36:54] code 400, message Bad request syntax ('email=oishikvffnptel%40gmail.com&password=gfyrytdf')
+2023-01-07 20:36:54,660 INFO werkzeug Thread-7 : 127.0.0.1 - - [07/Jan/2023 20:36:54] "[35m[1mNone /api/v1/login HTTP/0.9[0m" HTTPStatus.BAD_REQUEST -
+2023-01-07 20:36:57,165 INFO werkzeug Thread-9 : 127.0.0.1 - - [07/Jan/2023 20:36:57] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+2023-01-07 20:37:04,669 ERROR werkzeug Thread-9 : 127.0.0.1 - - [07/Jan/2023 20:37:04] code 400, message Bad request syntax ('email=oishikvffnptel%40gmail.com&password=gfyrytdf')
+2023-01-07 20:37:04,670 INFO werkzeug Thread-9 : 127.0.0.1 - - [07/Jan/2023 20:37:04] "[35m[1mNone /api/v1/login HTTP/0.9[0m" HTTPStatus.BAD_REQUEST -
+2023-01-07 20:38:54,406 INFO werkzeug Thread-11 : 127.0.0.1 - - [07/Jan/2023 20:38:54] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+2023-01-07 20:42:40,267 ERROR werkzeug Thread-11 : 127.0.0.1 - - [07/Jan/2023 20:42:40] code 400, message Bad request syntax ('email=oishikvffnptel%40gmail.com&password=gfyrytdf')
+2023-01-07 20:42:40,268 INFO werkzeug Thread-11 : 127.0.0.1 - - [07/Jan/2023 20:42:40] "[35m[1mNone /api/v1/login HTTP/0.9[0m" HTTPStatus.BAD_REQUEST -

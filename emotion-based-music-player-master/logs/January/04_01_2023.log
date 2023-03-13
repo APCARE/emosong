@@ -1,0 +1,46 @@
+2023-01-04 13:22:46,697 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+2023-01-04 13:49:39,352 ERROR app Thread-1 : Exception on /api/v1/signup [GET]
+Traceback (most recent call last):
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\views.py", line 84, in view
+    return current_app.ensure_sync(self.dispatch_request)(*args, **kwargs)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 193, in get
+    return make_response(render_template('login.html'))
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\templating.py", line 149, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\jinja2\environment.py", line 1071, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\jinja2\environment.py", line 1000, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\jinja2\environment.py", line 959, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\Oishik\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: login.html
+2023-01-04 13:49:39,477 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 13:49:39] "[35m[1mGET /api/v1/signup HTTP/1.1[0m" 500 -
+2023-01-04 13:49:40,273 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 13:49:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2023-01-04 13:50:09,038 INFO werkzeug Thread-4 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "GET /api/v1/signup HTTP/1.1" 200 -
+2023-01-04 13:50:09,102 INFO werkzeug Thread-5 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "[33mGET /api/v1/css/font-awesome.min.css HTTP/1.1[0m" 404 -
+2023-01-04 13:50:09,103 INFO werkzeug Thread-4 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "[33mGET /api/v1/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+2023-01-04 13:50:09,115 INFO werkzeug Thread-5 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "[33mGET /api/v1/css/main.css HTTP/1.1[0m" 404 -
+2023-01-04 13:50:09,115 INFO werkzeug Thread-4 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "[33mGET /api/v1/js/jquery.js HTTP/1.1[0m" 404 -
+2023-01-04 13:50:09,177 INFO werkzeug Thread-5 : 127.0.0.1 - - [04/Jan/2023 13:50:09] "[33mGET /api/v1/images/ico/favicon.ico HTTP/1.1[0m" 404 -
+2023-01-04 22:43:05,352 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+2023-01-04 22:43:21,760 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 22:43:21] "GET /api/v1/signup HTTP/1.1" 200 -
+2023-01-04 22:43:47,628 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+2023-01-04 22:43:58,852 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 22:43:58] "GET /api/v1/signup HTTP/1.1" 200 -
+2023-01-04 22:43:58,898 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 22:43:58] "[33mGET /api/v1/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+2023-01-04 22:43:58,900 INFO werkzeug Thread-2 : 127.0.0.1 - - [04/Jan/2023 22:43:58] "[33mGET /api/v1/css/font-awesome.min.css HTTP/1.1[0m" 404 -
+2023-01-04 22:43:58,915 INFO werkzeug Thread-1 : 127.0.0.1 - - [04/Jan/2023 22:43:58] "[33mGET /api/v1/css/main.css HTTP/1.1[0m" 404 -
+2023-01-04 22:43:58,921 INFO werkzeug Thread-2 : 127.0.0.1 - - [04/Jan/2023 22:43:58] "[33mGET /api/v1/js/jquery.js HTTP/1.1[0m" 404 -

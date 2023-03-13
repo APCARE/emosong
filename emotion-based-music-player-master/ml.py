@@ -1,0 +1,3 @@
+def capcha():
+    import capture
+

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | EmoMusic</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/adminmain.css" rel="stylesheet">    
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+	<style>
+		.callout_red {
+			position: fixed;
+			top: 35px;
+			right: 20px;
+			margin-left: 20px;
+			/* max-width: 300px; */
+			padding: 25px 15px;
+			background: red;
+			/* font-size: 10px; */
+			color: white;
+		}
+		.callout_green{
+			position: fixed;
+			top: 35px;
+			right: 20px;
+			margin-left: 20px;
+			/* max-width: 300px; */
+			padding: 25px 15px;
+			background: green;
+			/* font-size: 30px; */
+			color: white;
+		}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		td,th {
+			border: 1px solid #ffffff;
+			text-align: left;
+			padding: 8px;
+		}
+		
+		th {
+		  background-color: #dddddd;
+		}
+		tr:nth-child(even) {
+		  background-color: #a3fff0;
+		}
+		tr:nth-child(odd) {
+		  background-color: #cbfdc9;
+		}
+		</style>
+</head><!--/head-->
+
+<body>
+	<div id="alert_msg"></div>
+	<div class="body_container_all">
+		<header id="header"><!--header-->
+			<div class="header_top"><!--header_top-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="contactinfo">
+								<ul class="nav nav-pills">
+									<li><a href=""><i class="fa fa-phone"></i> +91 1111111111</a></li>
+									<li><a href=""><i class="fa fa-envelope"></i> emomusic@domain.com</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="social-icons pull-right">
+								<ul class="nav navbar-nav">
+									<li><a href=""><i class="fa fa-facebook"></i></a></li>
+									<li><a href=""><i class="fa fa-twitter"></i></a></li>
+									<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+									<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<div id="form"><!--form-->
+			<div class="container">
+				<div id="row" class="row">
+					<button class="btn" onclick="add_user()"><h2 style="color: green;">Add User</h2></button>
+					<button class="btn" onclick="fetch_users()"><h2 style="color: red;">All Users</h2></button>
+					<center><div id="user_area"></div></center>
+				</div>
+			</div>
+			<br/>
+			<!-- <div class="container">
+				<div id="row" class="row">
+					<button class="btn" onclick="add_song()"><h3>Add Song</h3></button>
+					<button class="btn" onclick="fetch_songs()"><h3>All Songs</h3></button>
+					<div id="song_area"></div>
+				</div>
+			</div> -->
+		</div><!--/form-->
+		
+		
+		<footer id="footer"><!--Footer-->
+			
+			<div class="footer-bottom" style="bottom: 0px;">
+				<div class="container">
+					<div class="row">
+						<p class="pull-left">Copyright © 2022 EmoMusic. All rights reserved.</p>
+						<p class="pull-right">Designed by <span><a target="_blank" href="#">DevTeam</a></span></p>
+					</div>
+				</div>
+			</div>
+			
+		</footer><!--/Footer-->
+		
+	</biv>
+  
+    <script src="/js/jquery.js"></script>
+	<script>
+		function add_user(){
+			let html = `<div id="signup_form" class="form">
+								<input id="sign_name" type="text" placeholder="Name" name="name" required="required"/>
+								<input id="sign_email" type="email" placeholder="Email Address" name="email" required="required"/>
+								<input id="sign_password" type="password" placeholder="Password" name="password" required="required"/>
+								<input id="sign_confirm_password" type="password" placeholder="Confirm Password" name="confirm_password" required="required"/>
+								<button id="button" type="submit" onclick="signup_form_submit()">Signup</button>
+							</div>`;
+			$('#user_area').html(html);
+		}
+		
+		function fetch_users(){
+			let url = '/api/v1/get_all_users';
+			let login_settings = {
+				"url": url,
+				"method": "GET",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json"
+				},
+				error: function(resp) {
+			        resp = JSON.parse(resp.responseText);
+					let html = `<p style='color: red;'>${resp.error_message}</p>`;
+					$('#status_message').html(html);
+				}
+			};
+			$.ajax(login_settings).done(function (resp) {
+				let thtml = ``;
+				let data = resp.data
+				for (val of data) {
+					for (const key in val) {
+						if (val[key]) {
+							val[key] = val[key];
+						} else {
+							val[key] = "";
+						}
+					} 
+				}
+				let ct = 1;
+				for (val of data) {
+					thtml += `
+					<tr>
+						<td>${ct}</td>
+						<td>${val.name}</td>
+						<td>${val.email}</td>
+						<td>${val.date_joined}</td>
+						<td>${val.last_login}</td>
+						<td><button class="btn" onclick="delete_user('${val.name}','${val.email}')"><i class="fa fa-trash-o" Style="color:red;"></i></button></td>
+					</tr>
+					`;
+					ct += 1;
+				}
+				let html = `
+				<table>
+					<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Email Id</th>
+						<th>Joining Date</th>
+						<th>Last Login</th>
+						<th>Delete User</th>
+					</tr>
+					</thead>
+					<tbody>
+						${thtml}
+					</tbody>
+				</table>
+				`;
+				$('#user_area').html(html);
+			});
+			return;
+		}
+		
+		function add_song(){
+			console.log("hii all")
+		}
+
+		function fetch_songs(){
+			console.log("hii all")
+		}
+
+		function signup_form_submit(){
+			// $('#status_message').html("");
+			let url = '/api/v1/signup'
+			let data = {
+				"email": $('#sign_email').val(),
+				"password": $('#sign_password').val(),
+				"confirm_password": $('#sign_confirm_password').val(),
+				"name": $('#sign_name').val()
+			}
+			let login_settings = {
+				"url": url,
+				"method": "POST",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json"
+				},
+				"data": JSON.stringify(data),
+				error: function(resp) {
+			        resp = JSON.parse(resp.responseText);
+					let msg = `<div class="callout_red">${resp.error_message}</div>`
+					setTimeout(function(){$("#alert_msg").html("");}, 5000);
+					$("#alert_msg").html(msg);
+				}
+			};
+			$.ajax(login_settings).done(function (resp) {
+				let msg = `<div class="callout_green">User Successfully Created</div>`
+				setTimeout(function(){$("#alert_msg").html("");}, 5000);
+				$("#alert_msg").html(msg);
+				$("input").val("");
+			});
+			return;
+		}
+	
+		function delete_user(name, email){
+			if (!confirm(`Are you want to remove ${name}?`)){
+				return false;
+			}
+			let url = '/api/v1/delete_user'
+			let data = {
+				"email": email
+			}
+			let login_settings = {
+				"url": url,
+				"method": "POST",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json"
+				},
+				"data": JSON.stringify(data),
+				error: function(resp) {
+			        resp = JSON.parse(resp.responseText);
+					let msg = `<div class="callout_red">${resp.error_message}</div>`
+					setTimeout(function(){$("#alert_msg").html("");}, 5000);
+					$("#alert_msg").html(msg);
+				}
+			};
+			$.ajax(login_settings).done(function (resp) {
+				let msg = `<div class="callout_green">${resp.error_message}</div>`
+				setTimeout(function(){$("#alert_msg").html("");}, 5000);
+				$("#alert_msg").html(msg);
+				fetch_users()
+			});
+			return;
+		}
+	</script>
+    <!-- <script src="js/main.js"></script> -->
+</body>
+</html>
